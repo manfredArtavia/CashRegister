@@ -2,15 +2,15 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <script type="text/javascript" src="./cashRegister.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="./cashRegister.css">
     <title>Cash Register</title>
   </head>
   <body>
-    <section class="cash-register">
+    <section class="cash-register col-md-12 col-lg-12">
       <h1>Cash Register</h1>
-      <form class="col-md-3 col-xs-12 col-lg-3" action="index.html" method="post">
+      <form id="cash-register-form" class="col-md-3 col-xs-12 col-lg-3" novalidate>
         <div class="form-group col-md-10">
             <label class="control-label" for="price">Price</label>
             <div>
@@ -25,15 +25,84 @@
                 placeholder="e.g $12" required>
             </div>
         </div>
-
         <div class="form-group col-md-10">
-          <button class="btn btn-secondary col-md-5" type="button" name="button">Cancel</button>
-          <button class="btn btn-primary col-md-5 pull-right" type="button" name="button" onclick="cashRegister.onPay()">Pay</button>
+            <button class="btn btn-primary col-md-5 pull-right" type="button" name="button" onclick="cashRegister.onPay()">Pay</button>
         </div>
+        <section id="change-error" class="msg-box col-md-1O col-lg-10 label label-danger hidden"></section>
       </form>
-      <section id="change-result" class="">
-        here the result
+
+      <!--Results-->
+      <section id="results-section" class="msg-box col-md-3 col-lg-3 col-xs-12 label label-info hidden">
+        <label id="result-box"></label>
+        <table class="result-table table">
+          <thead>
+            <th>Bill</th>
+            <th>Quantity</th>
+          </thead>
+          <tbody id="tbody-result">
+          </tbody>
+        </table>
+        <label class="closed-msg label label-warning">CLOSED</label>
+      </section>
+
+      <!--Report Results-->
+      <section id="report-section" class="col-md-6 col-lg-6 col-xs-12 hidden">
+        <h1>Report</h1>
+        <table class="square-table table">
+          <thead>
+            <th>Initial Balance</th>
+            <th>Sold</th>
+            <th>Current Balance</th>
+          </thead>
+          <tbody id="tbody-square">
+          </tbody>
+        </table>
+      </section>
+
+      <!--Bills-->
+      <section class="col-md-6 pull-right">
+        <h1 id="current-balance">Current Balance</h1>
+        <table class="balance-table table">
+          <thead>
+            <th>Name</th>
+            <th>Value</th>
+            <th>Quantity</th>
+          </thead>
+          <tbody id="tbody-balance">
+          </tbody>
+        </table>
+        <button class="btn btn-secondary col-md-offset-3 col-lg-offset-3 col-md-6 col-lg-6"
+        type="button" name="button" onclick="cashRegister.onReport()">Generate Square</button>
       </section>
     </section>
+
+    <!--Pair Wise-->
+    <section col-lg-12 col-md-12>
+      <h1>Pair Wise</h1>
+      <div class="form-group col-md-4">
+        <label class="control-label" for="price">Array</label>
+        <input id="array" class="form-control" name="cash" type="text"
+        placeholder="e.g 1,2,3,4,5,6,7" required>
+      </div>
+      <div class="form-group col-md-2">
+        <label class="control-label" for="price">Value to find</label>
+        <input id="wanted" class="form-control" name="cash" type="number"
+        placeholder="e.g 10" required>
+      </div>
+      <section id='pairs-result-section' class="col-md-4 col-lg-4 pairs-sum hidden">
+        <label class="control-label">Result</label>
+        <section class="label label-info col-md-12 closed-msg">
+          <label id="pairs-sum"></label>
+          <section id="pairs-detail"></section>
+        </section>
+      </section>
+      <div class="form-group col-md-12">
+        <button class="btn btn-primary col-md-2 col-lg-2"
+        type="button" name="button" onclick="pairWise.onSearch()">Search</button>
+      </div>
+    </section>
+
+    <script type="text/javascript" src="./cashRegister.js"></script>
+    <script type="text/javascript" src="./pairWise.js"></script>
   </body>
 </html>

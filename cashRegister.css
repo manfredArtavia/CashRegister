@@ -1,3 +1,26 @@
 .cash-input {
   color: red;
 }
+
+.msg-box {
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.msg-box {
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.balance-table th {
+  text-align: left;
+}
+.result-table th {
+  text-align: center;
+}
+
+.closed-msg {
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
